@@ -1,10 +1,10 @@
 extends Position2D
 
- 
+var bullet_scene = preload("res://bullet.tscn")
 func _process(delta):
 	if Input.is_action_pressed("ui_select"):
 		for angle in [-0.2, -0.1, 0, 0.1, 0.2]:
-			var bullet = preload("res://bullet.tscn").instance()
+			var bullet = bullet_scene.instance()
 			bullet.rotation = get_parent().rotation + angle
 			bullet.position = global_position
 			bullet.set_as_toplevel(true)
@@ -26,7 +26,7 @@ func _process(delta):
 #		var ab = abs(a)
 #
 #		while a != 2*ab:
-#			var bullet = preload("res://bullet.tscn").instance()
+#			var bullet = bullet_scene.instance()
 #			bullet.rotation = get_parent().rotation + a
 #			bullet.position = global_position
 #			bullet.set_as_toplevel(true)
