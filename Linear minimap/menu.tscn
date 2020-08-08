@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Button.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.137255, 0.627451, 0.572549, 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 381.505
+margin_top = 290.084
+margin_right = 600.505
+margin_bottom = 331.084
+text = "Play"
+script = ExtResource( 1 )
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
