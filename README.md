@@ -1,3 +1,2 @@
 # Godot-Projects
-
-Cool tutorials of all these files here: www.youtube.com/daviesnzan
+Tutorials of all these projects here: www.youtube.com/daviesdev
