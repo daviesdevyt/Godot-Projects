@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://objects/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game.gd" type="Script" id=2]
+[ext_resource path="res://assets/AGENCYB.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://bg_stars.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 3 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="meteors" type="Node2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 593, 426 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="spawn_points" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="spawn_points"]
+position = Vector2( 93, 0 )
+
+[node name="Position2D2" type="Position2D" parent="spawn_points"]
+position = Vector2( 245, 0 )
+
+[node name="Position2D3" type="Position2D" parent="spawn_points"]
+position = Vector2( 397, 0 )
+
+[node name="Position2D4" type="Position2D" parent="spawn_points"]
+position = Vector2( 543, 0 )
+
+[node name="Position2D5" type="Position2D" parent="spawn_points"]
+position = Vector2( 704, 0 )
+
+[node name="Position2D6" type="Position2D" parent="spawn_points"]
+position = Vector2( 869, 0 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Score: "
+
+[node name="score" type="Label" parent="Label"]
+margin_left = 78.0
+margin_top = 4.0
+margin_right = 118.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="failed" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="failed"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.290196 )
+
+[node name="Button" type="Button" parent="failed/ColorRect"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 354.0
+margin_top = -15.0
+margin_right = -330.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 2 )
+text = "Try again"
+
+[node name="Bg_stars" parent="." instance=ExtResource( 4 )]
+layer = -1
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="failed/ColorRect/Button" to="." method="_on_Button_pressed"]
